@@ -15,8 +15,7 @@
 
 ### Association
 - has_many   :  items
-- has_many   :  addresses
-- has_one    :  purchase
+- has_many    :  purchase
 
 ## items テーブル
 
@@ -46,7 +45,7 @@
 | house_namber    | string       | not null                       |
 | building_name   | string       |                                |
 | phone_number    | string       | not null                       |
-| purchases       | references   | foreign_key: true              |
+| purchase        | references   | foreign_key: true              |
 
 
 ### Association
