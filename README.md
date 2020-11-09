@@ -4,14 +4,14 @@
 
 | Column               | Type   | Options     |
 | -------------------- | ------ | ----------- |
-| nickname             | string | not null    |
-| email                | string | not null    |
-| encrypted_password   | string | not null    |
-| last_name            | string | not null    |
-| first_name           | string | not null    |
-| last_name_kana       | string | not null    |
-| first_name_kana      | string | not null    |
-| birthday             | date   | not null    |
+| nickname             | string | null: false    |
+| email                | string | null: false |
+| encrypted_password   | string | null: false |
+| last_name            | string | null: false |
+| first_name           | string | null: false |
+| last_name_kana       | string | null: false |
+| first_name_kana      | string | null: false |
+| birthday             | date   | null: false |
 
 ### Association
 - has_many   :  items
@@ -21,14 +21,14 @@
 
 | Column                 | Type         | Options           |
 | -----------------------| ------------ | ----------------- |
-| name                   | string       | not null          |
-| info                   | text         | not null          |
-| category_id            | integer      | not null          |
-| sales_status_id        | integer      | not null          | 
-| shipping_fee_status_id | integer      | not null          |
-| prefecture_id          | integer      | not null          |
-| scheduled_delivery_id  | integer      | not null          |
-| price                  | integer      | not null          |
+| name                   | string       | null: false       |
+| info                   | text         | null: false       |
+| category_id            | integer      | null: false       |
+| sales_status_id        | integer      | null: false       | 
+| shipping_fee_status_id | integer      | null: false       |
+| prefecture_id          | integer      | null: false       |
+| scheduled_delivery_id  | integer      | null: false       |
+| price                  | integer      | null: false       |
 | user                   | references   | foreign_key: true |
 
 ### Association
@@ -39,12 +39,12 @@
 
 | Column          | Type         | Options                        |
 | --------------- | -------------| ------------------------------ |
-| postal_code     | string       | not null                       |
-| prefectures_id  | integer      | not null                       |
-| municipality    | string       | not null                       |
-| house_namber    | string       | not null                       |
+| postal_code     | string       | null: false                    |
+| prefectures_id  | integer      | null: false                    |
+| municipality    | string       | null: false                    |
+| house_namber    | string       | null: false                    |
 | building_name   | string       |                                |
-| phone_number    | string       | not null                       |
+| phone_number    | string       | null: false                    |
 | purchase        | references   | foreign_key: true              |
 
 
