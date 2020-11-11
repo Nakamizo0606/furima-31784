@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-
+  
   #def create
     #@item = Prototype.new(item_params)
     #if @item.save
