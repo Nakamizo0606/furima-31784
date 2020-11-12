@@ -132,13 +132,13 @@
         <%= link_to "#" do %>
         <div class='item-img-content'>
           <%= image_tag item.image, class: "item-img" %>
-          <% if item.image = nil %>
+          
           <%# 商品が売れていればsold outを表示しましょう %>
           <div class='sold-out'>
             <span>Sold Out!!</span>
           </div>
           <%# //商品が売れていればsold outを表示しましょう %>
-          <% end %>
+         
         </div>
         <div class='item-info'>
           <h3 class='item-name'>
@@ -156,7 +156,7 @@
       </li>
       <% end %>
       <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
-      <% if item = nil %>
+      <% if @items.length == 0 %>
       <%# 商品がない場合のダミー %>
       <%# 商品がある場合は表示されないようにしましょう %>
       <li class='list'>
