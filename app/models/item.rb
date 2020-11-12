@@ -1,0 +1,35 @@
+class Item < ApplicationRecord
+  belongs_to :user
+  has_one_attached :image
+
+  
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :category
+  belongs_to :sales_status
+  belongs_to :shipping_fee_status
+  belongs_to :prefecture
+  belongs_to :scheduled_delivery
+
+  with_options presence: true do
+  validates :name           
+  validates :info           
+  validates :category_id    
+  validates :sales_status_id
+  validates :shipping_fee_status_id
+  validates :prefecture_id         
+  validates :scheduled_delivery_id 
+  validates :price
+  validates :image 
+  end
+
+  validates :category_id,            numericality: { other_than: 0 }
+  validates :sales_status_id,        numericality: { other_than: 0 }
+  validates :shipping_fee_status_id, numericality: { other_than: 0 }
+  validates :prefecture_id,          numericality: { other_than: 0 }
+  validates :scheduled_delivery_id,  numericality: { other_than: 0 }
+
+  validates :price,  numericality: { only_integer: true,greater_than: 300, less_than: 9999999}
+  validates :price,  format: { with: /\A[0-9]\w*\z/, message: '販売価格は半角数字を使用してください' } 
+
+
+end
