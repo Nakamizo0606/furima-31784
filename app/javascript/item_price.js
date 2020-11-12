@@ -8,10 +8,6 @@ function item() {
     const value_result = inputValue * 0.1
     profitNumber.innerHTML = (Math.floor(inputValue - value_result));
 
-    console.log(inputValue);
-    console.log(addTaxDom);
-    console.log(profitNumber);
-
  });
 } 
 window.addEventListener("load",item);
