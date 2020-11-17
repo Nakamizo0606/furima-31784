@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-  
- 
+  belongs_to :user
+  has_one_attached :image
 
   
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -32,8 +32,6 @@ class Item < ApplicationRecord
   
   validates :price,  numericality: { only_integer: true,greater_than: 300, less_than: 9999999}
   validates :price,  format: { with: /\A[0-9]\w*\z/, message: '販売価格は半角数字を使用してください' } 
-  
-  belongs_to :user
-  has_one_attached :image
-  has_one :order
+
+
 end
