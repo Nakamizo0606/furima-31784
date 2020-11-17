@@ -3,8 +3,26 @@ require 'rails_helper'
 RSpec.describe OrderAddress, type: :model do
   describe '#create' do
     before do
-    @order = FactoryBot.build(:order_address)
+    seller = FactoryBot.create(:user)
+    buyer = FactoryBot.create(:user)
+    item = FactoryBot.build(:item, user_id:seller.id)
+    @order = FactoryBot.build(:order_address, user_id:buyer.id, item_id:item.id)
     end
+
+  describe '購入機能' do
+    context '購入がうまくいくとき' do
+
+    it "購入できる" do
+          expect(@order).to be_valid
+    end
+    
+    it "building_nameは空でも保存できること" do
+      @order.building_name = ""
+      expect(@order).to be_valid
+    end
+  end
+  
+  context '購入機能がうまくいかないとき' do
 
 
     it "tokenが空では登録できないこと" do
@@ -45,10 +63,7 @@ RSpec.describe OrderAddress, type: :model do
       expect(@order.errors.full_messages).to include("Municipality can't be blank")
     end
     
-    it "building_nameは空でも保存できること" do
-      @order.building_name = ""
-      expect(@order).to be_valid
-    end
+    
     
     it "配送先の情報として、番地が必須であること" do
       @order.house_number = nil
@@ -63,9 +78,12 @@ RSpec.describe OrderAddress, type: :model do
     end
     
     it "電話番号にはハイフンは不要で、11桁以内であること（09012345678となる）" do
-      @order.phone_number = "090123456789"
+      @order.phone_number = "090-12345-6789"
       @order.valid?
       expect(@order.errors.full_messages).to include("Phone number is invalid. Input half-width characters.")
     end
+   end
+  end
+
   end
 end  
